@@ -5,17 +5,14 @@
 #include <string>
 #include <vector>
 
-namespace calc
-{
+namespace calc {
 
-class IHistory
-{
-public:
-    virtual ~IHistory() = default;
+class IHistory {
+ public:
+  virtual ~IHistory() = default;
 
-    virtual void AddEntry(const std::string& operation) = 0;
-    virtual std::vector<std::string> GetLastOperations(size_t count) const = 0;
+  virtual void AddEntry(const std::string& operation) = 0;
+  virtual std::vector<std::string> GetLastOperations(size_t count) const = 0;
 };
 
-} // namespace calc
-
+}  // namespace calc

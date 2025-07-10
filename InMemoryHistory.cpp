@@ -2,18 +2,16 @@
 
 #include "InMemoryHistory.h"
 
-namespace calc
-{
+namespace calc {
 
-void InMemoryHistory::AddEntry(const std::string& operation)
-{
-    m_operations.push_back(operation);
+void InMemoryHistory::AddEntry(const std::string& operation) {
+  m_operations.push_back(operation);
 }
 
-std::vector<std::string> InMemoryHistory::GetLastOperations(size_t count) const
-{
-    auto start = m_operations.end() - std::min(count, m_operations.size());
-    return {start, m_operations.end()};
+std::vector<std::string> InMemoryHistory::GetLastOperations(
+    size_t count) const {
+  auto start = m_operations.end() - std::min(count, m_operations.size());
+  return {start, m_operations.end()};
 }
 
-} // namespace calc
+}  // namespace calc
