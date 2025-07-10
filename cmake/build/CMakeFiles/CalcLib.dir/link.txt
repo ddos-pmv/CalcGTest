@@ -1,2 +1,0 @@
-/usr/bin/ar qc libCalcLib.a CMakeFiles/CalcLib.dir/SimpleCalculator.cpp.o CMakeFiles/CalcLib.dir/InMemoryHistory.cpp.o
-/usr/bin/ranlib libCalcLib.a
