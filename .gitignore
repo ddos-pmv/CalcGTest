@@ -1,3 +1,9 @@
 .vscode
 .build
 .cmake
+.idea
+cmake-build-debug
+cmake
+cmake-build-release
+cmake-build-debug
+cmake-build-debug-coverage

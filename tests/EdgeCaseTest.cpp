@@ -23,9 +23,9 @@ class EdgeCaseTest : public ::testing::Test {
 
 TEST_F(EdgeCaseTest, AddWithMaxValues) {
   int a = std::numeric_limits<int>::max();
-  int b = -1;
+  int b = 1;
 
-  EXPECT_CALL(m_history, AddEntry("2147483647 + -1 = 2147483646"));
+  EXPECT_CALL(m_history, AddEntry("2147483647 + 1 = 2147483648"));
   ASSERT_EQ(m_calc.Add(a, b), a + b);
 }
 
@@ -33,8 +33,6 @@ TEST_F(EdgeCaseTest, SubtractWithMinValues) {
   int a = std::numeric_limits<int>::min();
   int b = 1;
 
-  // Осторожно: a - b может выйти за границы int
-  // Проверим поведение (может быть UB без проверки в коде)
   long long expected = static_cast<long long>(a) - b;
 
   std::ostringstream expectedEntry;
@@ -42,6 +40,12 @@ TEST_F(EdgeCaseTest, SubtractWithMinValues) {
 
   EXPECT_CALL(m_history, AddEntry(expectedEntry.str()));
   ASSERT_EQ(static_cast<long long>(m_calc.Subtract(a, b)), expected);
+}
+
+TEST_F(EdgeCaseTest, DivisionByZero) {
+  EXPECT_CALL(m_history, AddEntry).Times(0);
+
+  EXPECT_THROW(m_calc.Divide(10, 0), std::invalid_argument);
 }
 
 }  // namespace calc::tests

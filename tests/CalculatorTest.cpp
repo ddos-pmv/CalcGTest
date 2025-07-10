@@ -70,10 +70,4 @@ TEST_F(CalculationHistoryTest, HistoryRetrieval) {
   ASSERT_EQ(hist[1], "10 / 2 = 5");
 }
 
-TEST_F(CalculationHistoryTest, DivisionByZero) {
-  EXPECT_CALL(m_history, AddEntry).Times(0);
-
-  EXPECT_ANY_THROW(m_calc.Divide(10, 0));
-}
-
 }  // namespace calc::tests
